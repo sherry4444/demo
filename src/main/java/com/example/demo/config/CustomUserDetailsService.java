@@ -25,7 +25,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         //SUser对应数据库中的用户表，是最终存储用户和密码的表，可自定义
         //本例使用SUser中的email作为用户名:
         SUser user = suserService.findUserByEmail(userName);
-        System.out.println("========== user: "+user);
 
         if (user == null){
             throw new UsernameNotFoundException("userName:"+userName+"not found");

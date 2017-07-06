@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.SUserService;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ public class HelloController {
         return "home";
     }
 
-    @PreAuthorize("hasRole('user')")
-    @RequestMapping(value = "/admin",method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @RequestMapping(value = "/admin",method = RequestMethod.GET)
     public String toAdmin(){
         return "helloAdmin";
     }
