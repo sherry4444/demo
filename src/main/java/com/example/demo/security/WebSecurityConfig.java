@@ -30,17 +30,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/","/home").permitAll()
-                .anyRequest().authenticated()
+                    .antMatchers("/","/home").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/hello")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/hello")
+                    .permitAll()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/home")
-                .permitAll();
+                    .logout()
+                    .logoutSuccessUrl("/home")
+                    .permitAll()
+                .and()
+                    .rememberMe()
+                    .tokenValiditySeconds(14*24*60*60);
     }
 
     @Autowired
